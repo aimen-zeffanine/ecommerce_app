@@ -6,25 +6,25 @@ class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final Color? color;
   const CustomButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.color,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size(double.infinity, 50),
+        backgroundColor: GlobalVariables.secondaryColor,
+      ),
       child: Text(
         text,
         style: TextStyle(
           color: color == null ? Colors.white : Colors.black,
         ),
-      ),
-      onPressed: onPressed,
-      style: ElevatedButton.styleFrom(
-        minimumSize: const Size(double.infinity, 50),
-        backgroundColor: GlobalVariables.secondaryColor,
       ),
     );
   }
